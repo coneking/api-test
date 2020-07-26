@@ -9,4 +9,4 @@ def index():
 @server.route('/timeout')
 def timeout():
     time.sleep(180)
-    return jsonify({'time': 'more than 3 minutes'})
+    return jsonify({'time': 'So slow... more than 3 minutes'})
