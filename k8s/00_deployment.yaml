@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: api-test
+    environment: test
+  name: api-test
+spec:
+  selector:
+    matchLabels:
+      name: api-test
+      environment: test
+  template:
+    metadata:
+      labels:
+        name: api-test
+        environment: test
+    spec:
+      containers:
+      - image: conejado/api-test
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          tcpSocket:
+            port: 3000
+        name: api-test
+        readinessProbe:
+          tcpSocket:
+            port: 3000
+        ports:
+        - containerPort: 3000
+          name: api-test
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 50m
+            memory: 50Mi
