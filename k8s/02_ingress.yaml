@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    name: api-test
+    environment: test
+  name: api-test
+spec:
+  rules:
+  - host: api-test.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: svc-api
+          servicePort: 3000
+        path: /
