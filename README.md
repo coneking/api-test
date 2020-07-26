@@ -45,7 +45,16 @@ $ kubectl apply -f api-test/k8s
 
 ## How to use
 
-If you running on docker, you can consume the api as shown below.
+If you running on Kubernetes use the ingress resource or expose the service api-test with `port-forward`.
+
+```sh
+$ kubectl port-forward svc/api-test 3000
+Forwarding from 127.0.0.1:3000 -> 3000
+Forwarding from [::1]:3000 -> 3000
+```
+
+Now you can consume the api as shown below.
+
 <br>
 
 ### GET 
