@@ -1,7 +1,12 @@
-FROM python:3.6.9-alpine
+FROM python:3.9.10-alpine3.15
 
-COPY app /app
+RUN pip install --upgrade pip
+
+RUN adduser -D -u 1001 app
+USER 1001
 WORKDIR /app
-RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt 
+COPY --chown=1001:1001 app /app
+
+RUN pip install --user --no-cache-dir -r requirements.txt 
 
 CMD [ "python", "./app.py" ]
